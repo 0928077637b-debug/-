@@ -1,0 +1,35 @@
+name: Build HTML to APK
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install Bubblewrap
+        run: npm install -g @bubblewrap/cli
+
+      - name: Build APK
+        run: |
+          # هذه الخطوة تقوم بتحويل ملفات الويب لتطبيق أندرويد
+          # سيتم إنشاء ملف APK في المجلد الناتج
+          mkdir output
+          npx build-pwa-extension --cv -i index.html -o output
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: my-app-apk
+          path: output/*.apk
