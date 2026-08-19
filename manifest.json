@@ -1,0 +1,12 @@
+{
+  "background_color": "#e83838",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "Al Dakil",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "Al Dakil",
+  "start_url": "/",
+  "theme_color": "#dee43a",
+  "id": "com.aldakheel.game"
+}
